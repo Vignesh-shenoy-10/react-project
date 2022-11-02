@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createPost } from "../actions/postActions";
+import {Button,TextField } from "@mui/material"
 
 class Postform extends Component {
   constructor(props) {
@@ -31,29 +32,28 @@ class Postform extends Component {
   render() {
     return (
       <div>
-        <h1>Add Post</h1>
+        <h2>Add your post</h2>
         <form onSubmit={this.onSubmit}>
           <div>
-            <label>Title:</label>
-            <br />
-            <input
-              type="text"
+            <TextField id="outlined-basic" label="Post Title" variant="outlined" type="text"
               name="title"
               onChange={this.onChange}
               value={this.state.title}
-            />
+              style={{ width: '200px'}} 
+              required />
           </div>
           <div>
-            <label>Body:</label>
-            <br />
-            <input
-              type="text"
+            <TextField id="outlined-basic" label="Post Body" variant="outlined" type="text"
               name="body"
               onChange={this.onChange}
               value={this.state.body}
-            />
+              style={{marginTop: "10px", width: '500px'}} 
+              multiline
+              required/>
           </div>
-          <button type="submit">Add Post</button>
+          <p>Should return 201 status if success</p>
+          <Button type="submit" variant="outlined" >Add Post</Button>
+          
         </form>
       </div>
     );

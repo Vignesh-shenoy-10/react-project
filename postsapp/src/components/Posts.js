@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchPosts } from "../actions/postActions";
+import Box from '@mui/material/Box';
 
 class Posts extends Component {
   componentDidMount() {
@@ -10,11 +11,29 @@ class Posts extends Component {
   render() {
     const postItems = this.props.posts.map((post) => (
       <div key={post.id}>
-        <h3>{post.title}</h3>
+       <strong> <p sx={{}}>{post.title}</p></strong>
+       <center>
+        <Box
+        sx={{
+          width:500,
+          height:100,
+          backgroundColor: 'primary.light',
+          color: 'white',
+          borderRadius: 1
+        }}
+        >
         <p>{post.body}</p>
+          </Box>
+          </center>
+       
       </div>
     ));
-    return <div>{postItems}</div>;
+    return (
+    <div>
+      <h2>Dashboard Feed</h2>
+      <p>Random Feed fetched from "jsonplaceholder.typicode.com/posts"</p>
+      {postItems}
+      </div>)
   }
 }
 
